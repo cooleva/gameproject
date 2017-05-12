@@ -1,0 +1,40 @@
+import java.awt.Graphics;
+public class Map
+{
+    Tile[][] tiles;
+    int xPos, yPos;
+    
+
+    /**
+     * Constructor for objects of class Map
+     */
+    public Map(int [][] map)
+    {
+        tiles = new Tile[map.length][map[0].length];
+        xPos=0;
+        yPos=0;
+        for (int i=0; i<map.length; i++)
+        {
+            for (int j=0; j<map[0].length; j++)
+            {
+                tiles[i][j]= new Tile(map[i][j],xPos,yPos);
+                xPos+=40;
+            }
+            yPos+=40;
+            xPos=0;
+        }
+    }
+    
+    public void draw(Graphics page)
+    {
+        
+        for (int i=0; i<tiles.length; i++)
+        {
+            for (int j=0; j<tiles[0].length; j++)
+            {
+                tiles[i][j].draw(page);
+            }
+        }
+
+    }
+}
