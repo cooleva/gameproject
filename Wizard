@@ -1,0 +1,20 @@
+
+/**
+ * Write a description of class Wizard here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class Wizard
+{
+    
+
+    /**
+     * Constructor for objects of class Wizard
+     */
+    public Wizard()
+    {
+
+    }
+
+}
