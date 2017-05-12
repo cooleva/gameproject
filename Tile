@@ -1,0 +1,88 @@
+import java.awt.Graphics;
+import java.awt.Image;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+
+public class Tile
+{
+    final int HEIGHT = 40;
+    final int WIDTH = 40;
+    String imgFileName;
+    Image img = null;
+    int t;
+    int xPlace, yPlace;
+    
+
+    /**
+     * Constructor for objects of class Tile
+     */
+    public Tile(int type,int x,int y)
+    {
+        t=type;
+        xPlace=x;
+        yPlace=y;
+        setImageFileName(t);
+        setImage();
+    }
+    
+    
+    public void setImageFileName(int type)
+    //change this method to work on diff comps??
+    {
+        if (type == 0)
+        {
+            imgFileName = ("");
+        }
+        else if (type == 1)
+        {
+            imgFileName = ("H:\\APCompSci\\Project\\images\\ground.png");
+        }
+        else if (type == 2)
+        {
+            imgFileName = ("H:\\APCompSci\\Project\\images\\.png");
+        }
+        else if (type == 3)
+        {
+            imgFileName = ("H:\\APCompSci\\Project\\images\\.png");
+        }
+        else if (type == 4)
+        {
+            imgFileName = ("H:\\APCompSci\\Project\\images\\.png");
+        }
+        else if (type == 5)
+        {
+            imgFileName = ("H:\\APCompSci\\Project\\images\\.png");
+        }
+        else if (type == 6)
+        {
+            imgFileName = ("H:\\APCompSci\\Project\\images\\.png");
+        }
+        else if (type == 7)
+        {
+            imgFileName = ("H:\\APCompSci\\Project\\images\\.png");
+        }
+        else if (type == 8)
+        {
+            imgFileName = ("H:\\APCompSci\\Project\\images\\wall.png");
+        }
+        else if (type == 9)
+        {
+            imgFileName = ("H:\\APCompSci\\Project\\images\\.png");
+        }
+    }
+    
+    public void setImage()
+    {
+        try
+        {img = ImageIO.read(new File(imgFileName));}
+        catch (IOException e)
+        {e.printStackTrace();}
+    }
+    
+    public void draw(Graphics page)
+    {
+        page.drawImage(img,xPlace,yPlace, null);
+    }
+
+}
