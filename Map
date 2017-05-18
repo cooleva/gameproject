@@ -25,6 +25,11 @@ public class Map
         }
     }
     
+    public Tile getTile(int r, int c)
+    {
+        return tiles[r][c];
+    }
+    
     public void draw(Graphics page)
     {
         
