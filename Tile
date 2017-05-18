@@ -6,12 +6,12 @@ import javax.imageio.ImageIO;
 
 public class Tile
 {
-    final int HEIGHT = 40;
-    final int WIDTH = 40;
-    String imgFileName;
-    Image img = null;
-    int t;
-    int xPlace, yPlace;
+    private final int HEIGHT = 40;
+    private final int WIDTH = 40;
+    private String imgFileName;
+   private  Image img = null;
+   private int t;
+   private int xPlace, yPlace;
     
 
     /**
@@ -25,10 +25,22 @@ public class Tile
         setImageFileName(t);
         setImage();
     }
+        
+        public int getType()
+    {
+        return t;
+    }
+        
+        public boolean isPassable(Wizard w)
+    {
+        //fix for diff types of wizard, flesh out
+        if (t == 1) return true;
+        else return false;
+    }
     
     
     public void setImageFileName(int type)
-    //change this method to work on diff comps??
+    //change this method to work on diff comps, put in all the images
     {
         if (type == 0)
         {
