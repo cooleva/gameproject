@@ -1,6 +1,7 @@
 
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 
 /**
  * Class GameRunner - write a description of the class here
@@ -8,11 +9,12 @@ import javax.swing.*;
  * @author (your name) 
  * @version (a version number)
  */
-public class GameRunner extends JApplet
+public class GameRunner extends JApplet implements KeyListener
 {
     // instance variables - replace the example below with your own
     Map map;
     GameGUI gui = new GameGUI();
+    Wizard wiz = new Wizard();
 
     /**
      * Called by the browser or applet viewer to inform this JApplet that it
@@ -21,7 +23,8 @@ public class GameRunner extends JApplet
      */
     public void init()
     {
-        
+        setFocusable(true);
+        setFocusTraversalKeysEnabled(false);
     
         // provide any initialisation necessary for your JApplet
     }
@@ -33,8 +36,9 @@ public class GameRunner extends JApplet
      */
     public void start()
     {
-        // provide any code requred to run each time 
-        // web page is visited
+        map = gui.mazeMap();
+        
+        addKeyListener (this);
     }
 
     /** 
@@ -56,8 +60,8 @@ public class GameRunner extends JApplet
      */
     public void paint(Graphics g)
     {
-        map = gui.mazeMap();
         map.draw(g);
+        wiz.draw(g);
     }
 
     /**
@@ -69,40 +73,29 @@ public class GameRunner extends JApplet
     {
         // provide code to be run when JApplet is about to be destroyed.
     }
-
-
-    /**
-     * Returns information about this applet. 
-     * An applet should override this method to return a String containing 
-     * information about the author, version, and copyright of the JApplet.
-     *
-     * @return a String representation of information about this JApplet
-     */
-    public String getAppletInfo()
+     public void keyPressed(KeyEvent e){
+    if (e.getKeyCode() == KeyEvent.VK_UP) 
     {
-        // provide information about the applet
-        return "Title:   \nAuthor:   \nA simple applet example description. ";
+        wiz.move(map,'u');
+        repaint();
     }
-
-
-    /**
-     * Returns parameter information about this JApplet. 
-     * Returns information about the parameters than are understood by this JApplet.
-     * An applet should override this method to return an array of Strings 
-     * describing these parameters. 
-     * Each element of the array should be a set of three Strings containing 
-     * the name, the type, and a description.
-     *
-     * @return a String[] representation of parameter information about this JApplet
-     */
-    public String[][] getParameterInfo()
+    if (e.getKeyCode() == KeyEvent.VK_DOWN) 
     {
-        // provide parameter information about the applet
-        String paramInfo[][] = {
-                 {"firstParameter",    "1-10",    "description of first parameter"},
-                 {"status", "boolean", "description of second parameter"},
-                 {"images",   "url",     "description of third parameter"}
-        };
-        return paramInfo;
+        wiz.move(map,'d');
+        repaint();
     }
+    if (e.getKeyCode() == KeyEvent.VK_LEFT) 
+    {
+        wiz.move(map,'l');
+        repaint();
+    }
+    if (e.getKeyCode() == KeyEvent.VK_RIGHT) 
+    {
+        wiz.move(map,'r');
+        repaint();
+    }
+  }
+public void keyReleased(KeyEvent e){}
+  public void keyTyped(KeyEvent e){}
+
 }
