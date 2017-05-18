@@ -25,6 +25,7 @@ public class GameRunner extends JApplet implements KeyListener
     {
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
+        //set the size of the applet?
     
         // provide any initialisation necessary for your JApplet
     }
