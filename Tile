@@ -33,6 +33,7 @@ public class Tile
         
         public boolean isPassable(Wizard w)
     {
+        //check if somethings already there (eg key, cage)
         //fix for diff types of wizard, flesh out
         if (t == 1) return true;
         else return false;
